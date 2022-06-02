@@ -1,0 +1,47 @@
+class GfG
+{
+    int minEle;
+    Stack<Integer> s =new Stack<>();
+    //s;
+    /*returns min element from stack*/
+    int getMin()
+    {
+	// Your code here
+	if(s.isEmpty())
+	return -1;
+//	int[] arr=new int[s.size()];
+	int min=Integer.MAX_VALUE;
+// 		for(int i=0;i<s.size();i++){
+// 	    arr[i]=
+// 	}
+	for(int i=0;i<s.size();i++){
+	    int p=s.get(i);
+	    
+	    if(p<min)
+	    min=p;
+	    
+	    //s.pop();
+	}
+	return min;
+    }
+    
+    /*returns poped element from stack*/
+    int pop()
+    {
+	// Your code here	
+	if(s.isEmpty())
+	return -1;
+	
+	int p=s.peek();
+	s.pop();
+	return p;
+    }
+
+    /*push element x into the stack*/
+    void push(int x)
+    {
+	// Your code here
+	s.push(x);
+    }	
+}
+
