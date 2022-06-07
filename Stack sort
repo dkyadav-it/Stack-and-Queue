@@ -1,5 +1,34 @@
 //1.using recursion 
-
+class GfG{
+    public void addSort(Stack<Integer> s , int num){
+        if(s.isEmpty() || s.peek()<num){
+        s.push(num);
+        return;
+        }
+        
+        int n=s.peek();
+        s.pop();
+        
+        addSort(s,num);
+        
+        s.push(n);
+    }
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+		//add code here.
+		if(s.isEmpty())
+		return s;
+		
+		int num=s.peek();
+		s.pop();
+		
+		sort(s);
+		
+		addSort(s,num);
+		
+		return s;
+	}
+}
 
 //copy stack in to array then sort array and copy back -- worst implementation
 public Stack<Integer> sort(Stack<Integer> s)
