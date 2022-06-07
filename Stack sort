@@ -1,0 +1,33 @@
+//1.using recursion 
+
+
+//copy stack in to array then sort array and copy back -- worst implementation
+public Stack<Integer> sort(Stack<Integer> s)
+	{
+		//add code here.
+		Stack<Integer> res=new Stack<>();
+		int[] a=new int[s.size()];
+		int i=0;
+		while(!s.isEmpty()){
+		    a[i++]=s.pop();
+		}
+
+	int len=a.length;
+		for(int j=0;j<len-1;j++){
+		    
+		    for(int k=j+1;k<len;k++){
+		       if(a[j]>a[k]){
+		           int temp=a[j];
+		           a[j]=a[k];
+		           a[k]=temp;
+		       }
+		    }
+		    
+		}
+		for(int n=0;n<len;n++){
+//System.out.print(a[n]+" ");
+		    res.push(a[n]);
+		}
+        
+		return res;
+	}
