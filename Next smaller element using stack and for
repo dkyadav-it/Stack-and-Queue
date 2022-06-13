@@ -1,0 +1,42 @@
+// brute force approach
+
+class Solution {
+	public static int[] help_classmate(int arr[], int n) 
+	{ 
+	   // Stack<Integer> st=new Stack<>();
+	   // st.push(-1);
+	   int[] res=new int[n];
+	    for(int i=0;i<n;i++){
+	        int val=-1;
+	        for(int j=i+1;j<n;j++){
+	            if(arr[i]>arr[j]){
+	            val=arr[j];
+	            break;
+	            }
+	        }
+	       res[i]=val;
+	    }
+	    
+	    return res;
+	} 
+}
+
+// using stack
+class Solution {
+	public static int[] help_classmate(int arr[], int n) 
+	{ 
+	    Stack<Integer> st=new Stack<>();
+	    int[] ans=new int[n];
+	    st.push(-1);
+	    for(int i=n-1;i>=0;i--){
+	    while(!st.isEmpty() && arr[i]<=st.peek()){
+	        st.pop();
+	    }
+	    if(!st.isEmpty())
+	    ans[i]=st.peek();
+	    
+	    st.push(arr[i]);
+	    }
+      return ans;
+      }
+      }
