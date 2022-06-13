@@ -1,0 +1,26 @@
+class Solution
+{ 
+    public static Stack<Integer> rev(Stack<Integer> s){
+        if(s.isEmpty())
+        return s;
+        
+        int num=s.peek();
+        s.pop();
+        
+        rev(s);
+        
+        s.push(num);
+        
+        return s;
+    }
+    static ArrayList<Integer> reverse(Stack<Integer> s)
+    {
+        s=rev(s);
+        ArrayList<Integer> res=new ArrayList<>();
+        while(!s.isEmpty()){
+            res.add(s.peek());
+            s.pop();
+        }
+        return res;
+    }
+}
