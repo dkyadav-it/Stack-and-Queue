@@ -1,0 +1,72 @@
+class Solution
+{
+// find next smaller element index
+    private static long[] next(long arr[]){
+        int len=arr.length;
+        Stack<Integer> st=new Stack<>();
+	    long[] ans=new long[len];
+	    st.push(-1);
+	    for(int i=len-1;i>=0;i--){
+	    while(st.peek()!=-1 && arr[i]<=arr[st.peek()]){
+	        st.pop();
+	    }
+	   // if(!st.isEmpty())
+	    ans[i]=(long)st.peek();
+	    
+	    st.push(i);
+	    }
+      return ans;
+    }
+    
+    // find previous smaller element index
+    private static long[] prev(long arr[]){
+        int len=arr.length;
+        Stack<Integer> st=new Stack<>();
+	    long[] ans=new long[len];
+	    st.push(-1);
+	    for(int i=0;i<len;i++){
+	    while(st.peek()!=-1 && arr[i]<=arr[st.peek()]){
+	        st.pop();
+	    }
+	   // if(!st.isEmpty())
+	    ans[i]=(long)st.peek();
+	    
+	    st.push(i);
+	    }
+      return ans; 
+    }
+    //find width by subtracting next small-prev small-1  
+    private static long[] findWidth(long hist[]){
+        int len=hist.length;
+        long[] w=new long[len];
+        long[] next=next(hist);
+         long[] prev=prev(hist);
+         //  for(int i=0;i<len;i++){
+         //   System.out.print(prev[i]+" ");
+        //    }
+       
+       
+        for(int i=0;i<len;i++){
+            if(next[i]==-1)
+            next[i]=len;
+            
+            w[i]=next[i]-prev[i]-1;
+        }
+        return w;
+    }
+    //Function to find largest rectangular area possible in a given histogram.
+    public static long getMaxArea(long hist[], long n) 
+    {
+        int len=hist.length;
+        long ans=Integer.MIN_VALUE;
+        long[] width=findWidth(hist);
+        for(int i=0;i<len;i++){
+            long area=hist[i]*width[i];
+            if(area>ans)
+            ans=area;
+        }
+        
+        return ans;
+    }
+        
+}
